@@ -28,7 +28,7 @@ To start the application, run: npm start
 
 ## Screenshots
 
-![ScreenShot_20240510221240](https://github.com/khatamirock/Task_Assigner/assets/67198296/4ccaf5da-22c3-4152-a7e4-6fd296ae003c)
+![ScreenShot_20240511001738](https://github.com/khatamirock/Task_Assigner/assets/67198296/fbeb6d56-ba98-4951-95cb-a24cf4dc5450)
 
 ![ScreenShot_20240510223141](https://github.com/khatamirock/Task_Assigner/assets/67198296/1a9ba82c-99fe-4ef6-ae56-a5297e66cfac)
 
