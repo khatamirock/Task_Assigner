@@ -4,17 +4,18 @@ In this project, we are going to create a Node.js CRUD application with Express 
 
 ## Installation
 
-1. Clone the repository:
+1. Clone the repository: git clone https://github.com/khatamirock/Task_Assigner.git
 
-2. Navigate to the project directory:
+2. Navigate to the project directory: cd Task_Assigner
 
-3. Install dependencies:
+3. Install dependencies: npm install
 
-4. Create a `config.env` file and specify the following variables:
+4. Create a `config.env` file 
+
 
 ## Usage
 
-To start the application, run:
+To start the application, run: npm start
 
 ## Screenshots
 
