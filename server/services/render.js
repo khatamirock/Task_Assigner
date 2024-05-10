@@ -1,6 +1,22 @@
 const axios = require('axios');
 
 
+async function findUserData(id) {
+    try {
+        const response = await axios.get('http://localhost:5000/api/users', {
+            params: { id }
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+
+
+
+
+
 exports.homeRoutes = (req, res) => {
     // Make a get request to /api/users
     
@@ -40,42 +56,38 @@ exports.add_post= (req,res)=>{
     
 }
 
-exports.find_post=(req, res) => {
+exports.find_post=async (req, res) => {
     const userId = req.query.id; // Use req.params.id to access route parameters
     console.log(userId);
+    const data=await findUserData(userId);
     axios.get(`http://localhost:5000/api/post/${userId}`) // Use ${userId} to include the user ID in the URL
         .then(function(userdata){
             console.log("\n\n\n\n>>>>>>>>>>>");
-            console.log(userdata.data);
-            res.render('post_of_user', { posts : userdata.data});
+            // console.log(userdata.data);
+            
+            console.log("\n\n\n|||||||||||||||", data, '|||||||||||||||\n\n\n');
+            res.render('post_of_user', { posts : userdata.data,user:data.name,status:data.status});
         })
         .catch(error => {
             console.error("Error fetching user data:", error);
             res.status(500).send("Error fetching user data");
         });
  
-    // Fetch posts for the user with the provided userId
-    // // For now, let's assume you have fetched posts based on the user's ID
-    // const posts = [
-    //     { title: "Post 1", content: "Content of Post 1" },
-    //     { title: "Post 2", content: "Content of Post 2" },
-    //     // Add more posts as needed
-    // ];
-    // res.render('post_of_user', { posts: posts });
+ 
 };
 
 
 
 
 
-exports.update_user = (req, res) =>{
-    axios.get('http://localhost:5000/api/users', { params : { id : req.query.id }})
-        .then(function(userdata){
-            res.render("update_user", { user : userdata.data})
-        })
-        .catch(err =>{
-            res.send(err);
-        })
+exports.update_user =async (req, res) =>{
+    try {
+        const userData = await findUserData(req.query.id);
+        console.log("\n\n\n|||||||||||||||", userData, '|||||||||||||||\n\n\n');
+        res.render("update_user", { user: userData });
+    } catch (error) {
+        res.send(error);
+    }
 }
 
 exports.delete_user = (req, res) => {

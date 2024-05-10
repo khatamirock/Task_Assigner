@@ -12,9 +12,11 @@
         <!-- Dropdown menu for users -->
         <div class="form-group">
             <label for="user" class="text-light">Assign User</label>
-            <select name="user" class="form-control">
+            <select class="post_assgn_dropdn" name="user" class="form-control">
                 <% users.forEach(user => { %>
-                    <option value="<%= user._id %>"><%= user.name %></option>
+                    <option value="<%= user._id %>">
+                       <p class="post_assgn_vals"><%= user.name %></p> 
+                    </option>
                 <% }); %>
             </select>
         </div>

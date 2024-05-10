@@ -19,17 +19,13 @@ const userSchema = new mongoose.Schema({
 userSchema.post("save", async function(doc, next) {
     // Access the _id of the saved document
     const userId = doc._id;
-
-    // Log the userId
-    console.log('\n\n\n\n\||||||||||| saved userId:', userId, '|||||||||\n\n\n');
-    
+// Log the userId
+    // console.log('\n\n\n\n\||||||||||| saved userId:', userId, '|||||||||\n\n\n');    
     next();
 });
 
 // read this 
-// 663de489a5e7490f8c681e55
 // https://mongoosejs.com/docs/middleware.html#pre
-//add a functionality to check if a user is deleted currently
 userSchema.pre('deleteOne', async function(next) {
     const userId = this._conditions._id;
     console.log('deleted \n\n\n\n\||||||||||| delete userId:', userId, '|||||||||\n\n\n');

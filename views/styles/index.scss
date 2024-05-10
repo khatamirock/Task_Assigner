@@ -17,3 +17,71 @@
 }
 
 
+// post_assing
+
+.post_assgn_dropdn{
+    background: #16db93;
+    padding: 13px;
+    border-radius: 5px;
+    border-color: black 24px;
+    margin: 10px 10px ;
+    option{
+        background-color: white;
+        padding: 10px;
+        
+    }
+}
+
+
+
+
+
+
+// post_of_usres>>>>>>>>>>>>>>>>>>>>>>>>
+.posts_for_user_main{
+    padding: 30px;
+    .posts_for_user_info{
+        font-family: 'Barlow',sans-serif;
+        padding: 20px;    
+        background-color: #16db93;
+        border-radius: 10px;
+        p{
+            color: white;
+        }
+    }
+.posts_for_user{
+    background-color: #00955f;
+    padding: 20px;
+
+    margin: 30px 20px;
+    border-radius: 10px;
+    font-family: 'Barlow',sans-serif;
+    h2{
+        margin-left: 50px;
+        color: rgb(255, 205, 111);
+        font-weight: bold;
+    }
+    p{
+        margin-left: 50px;
+        color:wheat;
+        margin-top: 13px;
+        font-weight: bold;
+    }
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

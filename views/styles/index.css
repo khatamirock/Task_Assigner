@@ -9,4 +9,47 @@
 
 .tableRow {
   cursor: pointer;
+}
+
+.post_assgn_dropdn {
+  background: #16db93;
+  padding: 13px;
+  border-radius: 5px;
+  border-color: black 24px;
+  margin: 10px 10px;
+}
+.post_assgn_dropdn option {
+  background-color: white;
+  padding: 10px;
+}
+
+.posts_for_user_main {
+  padding: 30px;
+}
+.posts_for_user_main .posts_for_user_info {
+  font-family: "Barlow", sans-serif;
+  padding: 20px;
+  background-color: #16db93;
+  border-radius: 10px;
+}
+.posts_for_user_main .posts_for_user_info p {
+  color: white;
+}
+.posts_for_user_main .posts_for_user {
+  background-color: #00955f;
+  padding: 20px;
+  margin: 30px 20px;
+  border-radius: 10px;
+  font-family: "Barlow", sans-serif;
+}
+.posts_for_user_main .posts_for_user h2 {
+  margin-left: 50px;
+  color: rgb(255, 205, 111);
+  font-weight: bold;
+}
+.posts_for_user_main .posts_for_user p {
+  margin-left: 50px;
+  color: wheat;
+  margin-top: 13px;
+  font-weight: bold;
 }/*# sourceMappingURL=index.css.map */
