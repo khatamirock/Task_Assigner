@@ -5,16 +5,6 @@
 
 1. Clone the repository: git clone https://github.com/khatamirock/Task_Assigner.git
 
-=======
-# CRUD Application Node
-
-In this project, we are going to create a Node.js CRUD application with Express and MongoDB.
-
-## Installation
-
-1. Clone the repository: git clone https://github.com/khatamirock/Task_Assigner.git
-
->>>>>>> 0a933a31fb36ad7f4ba7dbb4550c8a6dff0c9eb0
 2. Navigate to the project directory: cd Task_Assigner
 
 3. Install dependencies: npm install
