@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const bodyparser = require("body-parser");
 const path = require('path');
-
+const methodOverride = require('method-override');
 const mDB = require('./server/database/connection');
 
 const app = express();
@@ -15,7 +15,7 @@ console.log(PORT);
 
 // log requests
 app.use(morgan('tiny'));
-
+app.use(methodOverride('_method'));
 
 // mongodb connection
 mDB();

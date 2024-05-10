@@ -3,7 +3,7 @@
 
     
     
-        <tr class="tableRow" onclick="kirevai('<%= users[i].name %>')">
+        <tr class="tableRow" onclick="kirevai('<%= users[i]._id %>')">
             
             <td><%= i + 1 %></td>
             <td><%= users[i].name %></td>
@@ -26,16 +26,13 @@
 
  
 <script>
-    function kirevai(userName) {
-        // Construct the URL with the userName parameter\
-        console.log(userName);
-        
-        // var url = '/kirevai/?id=' + encodeURIComponent(userName);
-        var url = '/kirevai'
-        // Redirect to the URL
+    function kirevai(userId) {
+        // Construct the URL with the userId parameter
+        var url = '/post_of_user?id=' + encodeURIComponent(userId);
         window.location.href = url;
     }
 </script>
+
 
     
 

@@ -1,0 +1,17 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+<main id="site-posts">
+    <% posts.forEach(post => { %>
+        <div class="post">
+            <h2><%= post.title %></h2>
+            <p><%= post.content %></p>
+            <!-- Add more fields as needed -->
+        </div>
+    <% }) %>
+</main>
+
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

@@ -42,8 +42,9 @@ exports.create = (req,res)=>{
 
 
 exports.post_create=(req,res)=>{
+
     
-    res.send({form:"SUCCess",...req.body})
+    
     if(!req.body){
         res.status(400).send({ message : "Content can not be emtpy!"});
         return;
@@ -51,20 +52,26 @@ exports.post_create=(req,res)=>{
     
     var post=new Postdb({
         title:req.body.title,
-        content:req.body.content
+        content:req.body.content,
+        user:req.body.user  
         
         
     });
 
     post.save()
-        .then((data)=>{
-            res.send(data);
-        })
-        .catch(e=>{
-            res.status(500).send({
-                message : e.message || "Some error occurred while creating a create operation"
-            });
-        })
+    .then((data) => {
+        // If the post is successfully saved, redirect to the homepage
+        res.redirect('/');
+    })
+    .catch(e => {
+        // If there's an error saving the post, send an error response
+        console.error('Error saving post:', e);
+        res.status(500).send({
+            message: "Some error occurred while creating a create operation"
+        });
+    });
+
+
     
 }
 
@@ -114,12 +121,14 @@ exports.update = (req, res)=>{
     }
 
     const id = req.params.id;
+    // res.send({id,...req.body});
     Userdb.findByIdAndUpdate(id, req.body, { useFindAndModify: false})
         .then(data => {
             if(!data){
                 res.status(404).send({ message : `Cannot Update user with ${id}. Maybe user not found!`})
             }else{
-                res.send(data)
+                // res.send(data)
+                res.redirect('/');
             }
         })
         .catch(err =>{
@@ -149,3 +158,30 @@ exports.delete = (req, res)=>{
             });
         });
 }
+
+exports.find_post=(req,res)=>{
+    const id=req.params.id;
+    console.log(id);
+    
+    if(id){
+        // // // //finding the post by user id................
+        Postdb.find({user:id})
+        .then(data=>{
+            res.send(data);
+        })
+        .catch(err=>{
+            res.send(err)
+        })
+        // console.log('finding post...........');
+        // res.send(`finder....${id}`);
+
+        
+
+    }
+    else{
+        res.send("No post found");
+    }    
+
+
+}
+

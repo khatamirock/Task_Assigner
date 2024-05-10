@@ -1,9 +1,10 @@
 const express = require('express');
 const route = express.Router()
-
+const axios = require('axios');
  
 const services = require('../services/render');
 const controller = require('../controller/controller');
+const { Userdb } = require('../model/model');
 
 
 
@@ -33,15 +34,9 @@ route.get('/delete_user',services.delete_user)
 
 
 
-route.get('/kirevai',(req,res)=>{
-    var id=req.query.id;
-    // var id=12;
-    console.log(id);
-    res.render('add_post');
-    
-})
+route.get('/kirevai', services.add_post)
 
-
+route.get('/post_of_user', services.find_post);
  
 
 // API
@@ -52,6 +47,7 @@ route.get('/api/users/', controller.find);
 // route.get('/api/users/:id', controller.find);
 route.put('/api/users/:id', controller.update);
 route.delete('/api/users/:id', controller.delete);
+route.get('/api/post/:id', controller.find_post);
 
 
 module.exports = route

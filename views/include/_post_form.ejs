@@ -1,20 +1,26 @@
- <!-- form handling -->
- <form action="/api/new_post" method="POST" id="add_user">
+<form action="/api/new_post" method="POST" id="add_user">
     <div class="new_user">
         <div class="form-group">
             <label for="name" class="text-light">TITLE</label>
-            <input type="hidden" name="id" value="">
+            
             <input type="text" name="title" value="" placeholder="The secrets of PostMan">
         </div>
         <div class="form-group">
             <label for="Email" class="text-light"> Content </label>
-            <input type="text" name="content" value="" placeholder="example@gmail.com">
+            <input type="text" name="content" value="" placeholder="WatchOut for the bugs...">
         </div>
-         
+        <!-- Dropdown menu for users -->
+        <div class="form-group">
+            <label for="user" class="text-light">Assign User</label>
+            <select name="user" class="form-control">
+                <% users.forEach(user => { %>
+                    <option value="<%= user._id %>"><%= user.name %></option>
+                <% }); %>
+            </select>
+        </div>
 
         <div class="form-group">
             <button type="submit" class="btn text-dark update">Save</button>
         </div>
-
     </div>
 </form>
