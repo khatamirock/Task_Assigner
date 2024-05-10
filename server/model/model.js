@@ -16,17 +16,26 @@ const userSchema = new mongoose.Schema({
 });
 
 
-userSchema.pre("save",async function(next){
-    console.log('pre save hook \n\n\n\n\||||||||||| saved vaiii|||||||||\n\n\n');
+userSchema.post("save", async function(doc, next) {
+    // Access the _id of the saved document
+    const userId = doc._id;
+
+    // Log the userId
+    console.log('\n\n\n\n\||||||||||| saved userId:', userId, '|||||||||\n\n\n');
+    
     next();
 });
 
+// read this 
+// 663de489a5e7490f8c681e55
+// https://mongoosejs.com/docs/middleware.html#pre
 //add a functionality to check if a user is deleted currently
-userSchema.post("remove",async function(next){
-    console.log('post remove hook \n\n\n\n\||||||||||| saved vaiii|||||||||\n\n\n');
+userSchema.pre('deleteOne', async function(next) {
+    const userId = this._conditions._id;
+    console.log('deleted \n\n\n\n\||||||||||| delete userId:', userId, '|||||||||\n\n\n');
+    await Postdb.deleteMany({ user: userId });
     next();
 });
-
 
 
 // Define Post schema

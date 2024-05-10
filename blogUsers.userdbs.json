@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "663dbdcb7314c11b8853b375"
+  },
+  "name": "Md. Khatami Khatami",
+  "email": "khatmaionik@gmail.com",
+  "gender": "Male",
+  "status": "Active",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663dbdcb7314c11b8853b371"
+  },
+  "name": "Md. Khatami ",
+  "email": "khatmaionik2@gmail.com",
+  "gender": "Male",
+  "status": "Active",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663dbdcb7314c11b8853b123"
+  },
+  "name": "sober vai",
+  "email": "userhdsf@gmail.com",
+  "gender": "Male",
+  "status": "Inactive",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663dbdcb7314c11b8853b333"
+  },
+  "name": "panik Mode",
+  "email": "hosfdfsd@usre.com",
+  "gender": "Feale",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "663de54bb67c6648b8bfbc91"
+  },
+  "name": "Rahat Iqbal broski",
+  "email": "ratuqrlhp@gmail.com",
+  "gender": "Male",
+  "status": "Active",
+  "__v": 0
+}]
