@@ -138,15 +138,19 @@ exports.update = (req, res)=>{
 
 // Delete a user with specified user id in the request
 exports.delete = (req, res)=>{
-    const id = req.params.id;
-    console.log("in this place to find delete user");
+    console.log("\n\n\n\n\n\n\n deleting wait.........");
     
+    const id = req.params.id;
 
-    Userdb.findByIdAndDelete(id)
-        .then(data => {
+    // Delete the user and associated posts using deleteOne
+    Userdb.deleteOne({ _id: id })
+        .then(async (data) => {
             if(!data){
                 res.status(404).send({ message : `Cannot Delete with id ${id}. Maybe id is wrong`})
-            }else{
+            } else {
+                // Optionally, you can also handle the deletion of posts here
+                // await Postdb.deleteMany({ user: id });
+
                 res.send({
                     message : "User was deleted successfully!"
                 })
@@ -158,6 +162,8 @@ exports.delete = (req, res)=>{
             });
         });
 }
+
+
 
 exports.find_post=(req,res)=>{
     const id=req.params.id;

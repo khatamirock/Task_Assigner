@@ -1,40 +1,48 @@
 const mongoose = require('mongoose');
 
-var schema = new mongoose.Schema({
-    name : {
-        type : String,
+// Define User schema
+const userSchema = new mongoose.Schema({
+    name: {
+        type: String,
         required: true
     },
-    email : {
+    email: {
         type: String,
         required: true,
         unique: true
     },
-    gender : String,
-    status : String
-})
+    gender: String,
+    status: String
+});
 
 
+userSchema.pre("save",async function(next){
+    console.log('pre save hook \n\n\n\n\||||||||||| saved vaiii|||||||||\n\n\n');
+    next();
+});
 
-const Userdb = mongoose.model('userdb', schema);
-
-// Define Posts schema
-const postSchema = new mongoose.Schema({
-    title: { type: String },
-    content: { type: String },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'Userdb' } // Reference to User model
+//add a functionality to check if a user is deleted currently
+userSchema.post("remove",async function(next){
+    console.log('post remove hook \n\n\n\n\||||||||||| saved vaiii|||||||||\n\n\n');
+    next();
 });
 
 
 
-// Define User model
+// Define Post schema
+const postSchema = new mongoose.Schema({
+    title: String,
+    content: String,
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Userdb'
+    }
+});
 
-// Define Posts model
-const Postdb = mongoose.model('Post', postSchema);
+// Define User model
+const Userdb = mongoose.model('Userdb', userSchema);
+
+// Define Post model
+const Postdb = mongoose.model('Postdb', postSchema);
 
 module.exports = { Userdb, Postdb };
-
-
-
-
- 
