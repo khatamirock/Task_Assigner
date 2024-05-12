@@ -13,7 +13,7 @@ route.get('/',isAdmin,services.homeRoutes);
  
 
 
-route.get('/add-user', services.add_user)
+route.get('/add-user',isAdmin, services.add_user)
 
 /**
  *  @description for update user
