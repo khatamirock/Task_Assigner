@@ -209,7 +209,56 @@ exports.post_done=((req,res)=>{
 
 });
 
- 
 
+
+
+
+
+exports.login_sys=((req,res)=>{
+
+    const {user,pass}=req.body;
+    console.log("\n\n\n|||||||||||||||ytytytyt", user,pass, '|||||||||||||||\n\n\n');
+    Userdb.find({name:user,password:pass})
+        .then((usr)=>{
+            
+            // res.send(user[0]);
+            req.session.logged=true;
+            if(pass==="222"){
+                
+                req.session.isAdmin = true;
+                
+            }
+            if(req.session.isAdmin){
+
+                res.redirect('/');
+            }
+            else{
+
+                res.redirect(`/user-home?user=${user}`);
+            }
+
+        })
+        .catch(e=>{
+            res.send(e);
+        })
+
+    
+    // res.send("hello")
+})
+
+
+
+
+exports.logout = (req, res) => {
+    // Destroy the session
+    req.session.destroy(err => {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Error logging out");
+        } else {
+            res.redirect('/login');
+        }
+    });
+};
 
 

@@ -9,3 +9,9 @@ route.get('/',(req,res)=>{
 });
 
 
+route.get('/tasks',(req,res)=>{
+    res.send("complete them.........");
+});
+
+
+module.exports = route;

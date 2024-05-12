@@ -41,45 +41,24 @@ app.use('/js', express.static(path.resolve(__dirname, "assets/js")));
 app.use(express.static("assets/js"));
 
 // Middleware for password authentication
-var theAdmin= false;
- 
- 
-// Middleware to check if user is admin
-function isAdmin(req, res, next) {
-    if (theAdmin) {
-        next();
-    } else {
-        // res.status(403).send("You are not authorized to access this route.");
-        
-        res.redirect('/login')
-    }
-}
-
-// Routes
-const router = require('./server/routes/router');
+var { theAdmin, isAdmin } = require('./auth');
 
 // Login route
-app.get('/login', (req, res) => {
-    res.render('user-login');
-});
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: false
+}));
+
+ 
 
 // Authentication route
-app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-    // Check if credentials are correct
-    console.log("\n\n\n|||||||||||||||", username,password, '|||||||||||||||\n\n\n');
-    if (password === '123') {
-        theAdmin = true;
-        res.redirect('/');
-    } else {
-        res.status(401).send("Invalid credentials");
-    }
-});
- 
-// app.use('/', require('./server/routes/router'));
-app.use('/', isAdmin, require('./server/routes/router'));
-// Non-admin routes
 
- 
+// app.use('/', require('./server/routes/router'));
+app.use('/', require('./server/routes/router'));
+
+// // Non-admin routes
+
+
 
 app.listen(PORT, () => { console.log(`Server is running on http://localhost:${PORT}`) });

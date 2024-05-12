@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Home</title>
+    <link rel="stylesheet" href="/styles/user-home.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome, <%= username %>!</h1>
+        </header>
+        <main>
+            <p>Thank you for using our application. We're glad to have you on board!</p>
+            <p>Explore the features and let us know if you need any assistance.</p>
+            <a href="/logout" class="border-shadow postAdder">
+                <span class="text-gradient">Log Out<i class="fas fa-user"></i></span>
+            </a>
+        </main>
+        <footer>
+            <p>© 2024 Your Company. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
