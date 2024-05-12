@@ -5,21 +5,37 @@ const axios = require('axios');
 const services = require('../services/render');
 const controller = require('../controller/controller');
 const { Userdb } = require('../model/model');
-
+const session = require('express-session');
 
 
 
 /**
  *  @description Root Routee
  *  @method GET /
+ * 
  */
+
+
+
 route.get('/', services.homeRoutes);
+route.get('/logn',(req,res)=>{
+    res.render('user-login');
+
+});
+
+// route.get('/userl','user-login');
+
 
 
 /**
  *  @description add users
  *  @method GET /add-user
  */
+
+
+
+
+
 route.get('/add-user', services.add_user)
 
 /**
@@ -54,6 +70,10 @@ route.delete('/api/users/:id', controller.delete);
 
 route.get('/api/post/:id', controller.find_post);
 route.get('/api/post_done', controller.post_done);
+
+
+
+
 
 
 module.exports = route
