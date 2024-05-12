@@ -191,3 +191,25 @@ exports.find_post=(req,res)=>{
 
 }
 
+exports.post_done=((req,res)=>{
+    const id=req.query.id;
+    console.log("\n\n\n|||||||||||||||", id[0], '|||||||||||||||\n\n\n');
+    if(id){
+        Postdb.deleteOne({_id:id[0]})
+        .then(data=>{
+            console.log(data);
+            res.redirect('/');
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+    // res.send(["\n\n\n|||||||||||||||", 'post sone............',id, '|||||||||||||||\n\n\n']);
+    
+
+});
+
+
+
+
+

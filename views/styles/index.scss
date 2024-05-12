@@ -48,9 +48,19 @@
         p{
             color: white;
         }
+
+        .active_status {
+            color: red; /* Color for active status */
+            font-weight: bold;
+        }
+        
+        .inactive_status {
+            color: #888; /* Color for inactive status */
+        }
+        
     }
 .posts_for_user{
-    background-color: #00955f;
+    background-color: black;
     padding: 20px;
 
     margin: 30px 20px;
@@ -67,7 +77,30 @@
         margin-top: 13px;
         font-weight: bold;
     }
+    .posts_done_btn {
+        background-color: #5dafc2;
+        color: #fff; /* Text color */
+        border: none; /* Remove border */
+        margin-top: 16px;
+        padding: 12px 20px; /* Add padding */
+        margin-left: 50px;
+        font-size: 16px; /* Font size */
+        border-radius: 6px; /* Rounded corners */
+        cursor: pointer; /* Show pointer cursor on hover */
+        transition: background-color 0.3s ease; /* Smooth transition */
+        &:hover{
+            background-color: #4b8b9e; /* Darker color on hover */
+        }
+    }
+    
+    
+    
+
 }
+
+
+
+
 
 
 }

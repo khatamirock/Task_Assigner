@@ -17,14 +17,14 @@ $("#update_user").submit(function(event){
 
 
     var request = {
-        "url" : `http://localhost:3000/api/users/${data.id}`,
-        "method" : "PUT",
-        "data" : data
-    }
-
-    $.ajax(request).done(function(response){
+        "url": `http://localhost:3000/api/users/${data.id}`,
+        "method": "PUT",
+        "data": data
+    };
+    
+    $.ajax(request).done(function(response) {
         alert("Data Updated Successfully!");
-    })
+    });
 
 })
 
@@ -47,3 +47,22 @@ if(window.location.pathname == "/"){
 
     })
 }
+
+
+
+$('.posts_done_btn').click(function(){
+    // get the data-id
+    var id = $(this).data('id');
+
+    var request = {
+        "url": `http://localhost:5000/api/post_done?id=${id}`, // Include id in the URL
+        "method": "GET",
+        data: { id }
+    
+    };
+    $.ajax(request).done(function(response) {
+        console.log("DONE IN JS...........",id);
+        location.reload();
+        
+    });
+})

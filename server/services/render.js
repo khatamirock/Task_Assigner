@@ -2,6 +2,7 @@ const axios = require('axios');
 
 
 async function findUserData(id) {
+    console.log("\n\n\n ub find user data|||||||||||||||", id, '|||||||||||||||\n\n\n');
     try {
         const response = await axios.get('http://localhost:5000/api/users', {
             params: { id }
@@ -10,6 +11,8 @@ async function findUserData(id) {
     } catch (error) {
         throw error;
     }
+
+    
 }
 
 
@@ -62,7 +65,6 @@ exports.find_post=async (req, res) => {
     const data=await findUserData(userId);
     axios.get(`http://localhost:5000/api/post/${userId}`) // Use ${userId} to include the user ID in the URL
         .then(function(userdata){
-            console.log("\n\n\n\n>>>>>>>>>>>");
             // console.log(userdata.data);
             
             console.log("\n\n\n|||||||||||||||", data, '|||||||||||||||\n\n\n');

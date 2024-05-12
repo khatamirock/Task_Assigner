@@ -5,12 +5,14 @@
 <main class="posts_for_user_main" id="site-posts">
     <div class="posts_for_user_info">
         <h1>posts for @<%=user%></h1>
-        <p><%=status%></p>
+        <p class="<%= status === 'Active' ? 'active_status' : 'inactive_status' %>"><%= status %></p>
     </div>
     <% posts.forEach(post => { %>
         <div class="posts_for_user">
             <h2><%= post.title %></h2>
+
             <p><%= post.content %></p>
+            <button class="posts_done_btn" data-id="<%=post._id%>" > DONE </button>
             <!-- Add more fields as needed -->
         </div>
     <% }) %>
