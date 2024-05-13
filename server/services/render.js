@@ -115,7 +115,8 @@ exports.login_sys=((req,res)=>{
     Userdb.find({name:user,password:pass})
         .then((usr)=>{
             
-            // res.send(user[0]);
+            console.log(usr);
+            const id=usr[0]._id;
             if(usr.length==1){
             
             
@@ -131,7 +132,7 @@ exports.login_sys=((req,res)=>{
             }
             else{
 
-                res.redirect(`/user-home?user=${user}`);
+                res.redirect(`/user-home?user=${user}&id=${id}`);
             }
         }
         else{

@@ -44,6 +44,8 @@ route.delete('/api/users/:id', controller.delete);
 
 // for posts.>>>>>>>>>>>
 
+
+// // // // //finding the post by user id................
 route.get('/api/post/:id', controller.find_post);
 route.get('/api/post_done', controller.post_complete);
 
@@ -53,11 +55,19 @@ route.get('/api/post_done', controller.post_complete);
 
 // for user
 route.get('/user-home', isLogged,(req,res)=>{
-    res.render('user-home',{username:req.query.user});
 
-});
-route.get('/tasks',isLogged,(req,res)=>{
-    res.send("complete them.........");
+    const id=req.query.id;
+    axios.get(`http://localhost:5000/api/post/${id}`)
+    .then(function(response) {
+        console.log('Request successful:');
+        console.log("\n\n\n|||||||||||||||", response.data, '|||||||||||||||\n\n\n');
+        res.render('user-home',{username:req.query.user,posts:response.data});
+    })
+    .catch(err => {
+        console.error('Error making GET request:', err);
+        res.status(500).send('Internal Server Error');
+    })
+
 });
 
 
@@ -69,6 +79,9 @@ route.get('/login', (req, res) => {
 });
 
 route.get('/signup', services.signup_Syst);
+route.get('/tasks',isLogged,(req,res)=>{
+    res.send("complete them.........");
+});
 
 
 
