@@ -19,6 +19,7 @@ exports.create = (req,res)=>{
     const user = new Userdb({
         name : req.body.name,
         email : req.body.email,
+        password : req.body.password,
         gender: req.body.gender,
         status : req.body.status
     })
@@ -191,7 +192,7 @@ exports.find_post=(req,res)=>{
 
 }
 
-exports.post_done=((req,res)=>{
+exports.post_complete=((req,res)=>{
     const id=req.query.id;
     console.log("\n\n\n|||||||||||||||", id[0], '|||||||||||||||\n\n\n');
     if(id){
@@ -211,54 +212,5 @@ exports.post_done=((req,res)=>{
 
 
 
-
-
-
-exports.login_sys=((req,res)=>{
-
-    const {user,pass}=req.body;
-    console.log("\n\n\n|||||||||||||||ytytytyt", user,pass, '|||||||||||||||\n\n\n');
-    Userdb.find({name:user,password:pass})
-        .then((usr)=>{
-            
-            // res.send(user[0]);
-            req.session.logged=true;
-            if(pass==="222"){
-                
-                req.session.isAdmin = true;
-                
-            }
-            if(req.session.isAdmin){
-
-                res.redirect('/');
-            }
-            else{
-
-                res.redirect(`/user-home?user=${user}`);
-            }
-
-        })
-        .catch(e=>{
-            res.send(e);
-        })
-
-    
-    // res.send("hello")
-})
-
-
-
-
-exports.logout = (req, res) => {
-    // Destroy the session
-    req.session.destroy(err => {
-        if (err) {
-            console.log(err);
-            res.status(500).send("Error logging out");
-        } else {
-            res.redirect('/login');
-        }
-    });
-};
 
 

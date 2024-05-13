@@ -52,9 +52,7 @@ app.use(session({
 
  
 
-// Authentication route
 
-// app.use('/', require('./server/routes/router'));
 app.use('/', require('./server/routes/router'));
 
 // // Non-admin routes

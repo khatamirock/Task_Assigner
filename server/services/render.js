@@ -1,8 +1,8 @@
 const axios = require('axios');
-
+const {Userdb,Postdb}=require('../model/model');
 
 async function findUserData(id) {
-    console.log("\n\n\n ub find user data|||||||||||||||", id, '|||||||||||||||\n\n\n');
+    // console.log("\n\n\n ub find user data|||||||||||||||", id, '|||||||||||||||\n\n\n');
     try {
         const response = await axios.get('http://localhost:5000/api/users', {
             params: { id }
@@ -107,4 +107,68 @@ exports.delete_user = (req, res) => {
 
 
 
+
+exports.login_sys=((req,res)=>{
+
+    const {user,pass}=req.body;
+    console.log("\n\n\n|||||||||||||||ytytytyt", user,pass, '|||||||||||||||\n\n\n');
+    Userdb.find({name:user,password:pass})
+        .then((usr)=>{
+            
+            // res.send(user[0]);
+            if(usr.length==1){
+            
+            
+            req.session.logged=true;
+            if(pass==="222"){
+                
+                req.session.isAdmin = true;
+                
+            }
+            if(req.session.isAdmin){
+
+                res.redirect('/');
+            }
+            else{
+
+                res.redirect(`/user-home?user=${user}`);
+            }
+        }
+        else{
+            res.send("wrong credentials");
+        }
+
+        })
+        .catch(e=>{
+            res.send(e);
+        })
+
+    
+    // res.send("hello")
+})
+
+
+
+
+exports.logout = (req, res) => {
+    // Destroy the session
+    req.session.destroy(err => {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Error logging out");
+        } else {
+            res.redirect('/login');
+        }
+    });
+};
+
+
+
+
+exports.signup_Syst=(req, res)=>{
+
+    // res.render('signIn_Syst');
+    // res.send("hello");
+    res.render('user-signup');
+}
 

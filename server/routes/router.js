@@ -42,11 +42,11 @@ route.get('/api/users/', controller.find);
 route.put('/api/users/:id', controller.update);
 route.delete('/api/users/:id', controller.delete);
 
-
 // for posts.>>>>>>>>>>>
 
 route.get('/api/post/:id', controller.find_post);
-route.get('/api/post_done', controller.post_done);
+route.get('/api/post_done', controller.post_complete);
+
 
 
 
@@ -62,13 +62,13 @@ route.get('/tasks',isLogged,(req,res)=>{
 
 
 // find-userForLogin with Pass
-route.post('/api/login_handler',controller.login_sys);
-route.get('/logout',controller.logout);
+route.post('/api/login_handler',services.login_sys);
+route.get('/logout',services.logout);
 route.get('/login', (req, res) => {
     res.render('user-login');
 });
 
-
+route.get('/signup', services.signup_Syst);
 
 
 
